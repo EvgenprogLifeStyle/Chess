@@ -6,7 +6,6 @@ import {Queen} from "./figures/Queen";
 import {Bishop} from "./figures/Bishop";
 import {Knight} from "./figures/Knight";
 import {Rook} from "./figures/Rook";
-import {fork} from "child_process";
 import {Figure} from "./figures/Figure";
 
 export class Board {
@@ -49,7 +48,6 @@ export class Board {
 
     public getCell(x: number, y: number) {
         return this.cells[y][x]
-
     }
 
     private addPawns() {
@@ -90,7 +88,6 @@ export class Board {
         new Rook(Colors.WHITE, this.getCell(7, 7))
     }
 
-
     public addFigures() {
         this.addPawns()
         this.addBishops()
@@ -98,9 +95,5 @@ export class Board {
         this.addRooks()
         this.addQueens()
         this.addKnights()
-
-        // new Queen(Colors.WHITE, this.getCell(3, 3))
     }
-
-
 }

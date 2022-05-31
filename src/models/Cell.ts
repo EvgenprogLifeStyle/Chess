@@ -11,7 +11,6 @@ export class Cell {
     available: boolean; // Можешь ли переместить
     id: number;//для react ключей
 
-
     constructor(board: Board, x: number, y: number, color: Colors, figure: Figure | null) {
         this.x = x
         this.y = y
@@ -31,7 +30,6 @@ export class Cell {
             return this.figure?.color !== target.figure.color
         }
         return false
-
     }
 
     isEmptyVertical(target: Cell): boolean {
@@ -47,7 +45,6 @@ export class Cell {
                 return false
         }
         return true
-
     }
 
     isEmptyHorizontal(target: Cell): boolean {
@@ -90,7 +87,6 @@ export class Cell {
         figure.color === Colors.BLACK
             ? this.board.lostBlackFigures.push(figure)
             : this.board.lostWhiteFigures.push(figure)
-
     }
 
     moveFigure(target: Cell) {

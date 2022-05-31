@@ -12,7 +12,6 @@ export enum FigureNames {
     BISHOP = 'Слон',
 }
 
-
 export class Figure {
     color: Colors;
     logo: typeof logo | null;
@@ -28,7 +27,6 @@ export class Figure {
         this.name = FigureNames.FIGURE;
         this.id = Math.random()
     }
-
 
     canMove(target: Cell): boolean {
         if (target.figure?.color === this.color)

@@ -1,7 +1,22 @@
+/* roboto-condensed-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/roboto-condensed-v25-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  url('./assets/fonts/roboto-condensed-v25-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./assets/fonts/roboto-condensed-v25-latin_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('./assets/fonts/roboto-condensed-v25-latin_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+  url('./assets/fonts/roboto-condensed-v25-latin_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('./assets/fonts/roboto-condensed-v25-latin_cyrillic-regular.svg#RobotoCondensed') format('svg'); /* Legacy iOS */
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto Condensed';
 }
 
 .App {
@@ -10,57 +25,180 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgb(245, 223, 190);
+  background: radial-gradient(circle, rgba(245, 223, 190, 0.711922268907563) 8%, rgba(192, 139, 96, 0.5718662464985995) 100%);
+  @media(max-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+}
 
+.title__top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  span {
+    margin: 0px 6px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+}
+
+.App__controls {
+  margin: auto 0;
+  min-height: calc(54px * 8);
+  @media(max-width: 768px) {
+    min-height: auto;
+    margin: 20px 0px 0px;
+    width: 100%;
+    padding: 0px 16px;
+  }
+
+  button {
+    background: rgb(250, 204, 159);
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 24px;
+    border-radius: 4px;
+    border-color: #fafafa;
+    box-shadow: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 20px;
+    @media(max-width: 768px) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.App__lost {
+  margin-top: 60px;
+  @media(max-width: 768px) {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .board {
-  width: calc(64px * 8);
-  height: calc(64px * 8);
-  display: flex;
-  flex-wrap: wrap;
+  //.board__body
+  &__body {
+    display: flex;
+  }
+
+  //.board__cell
+  &__cell {
+    width: calc((54px * 8) + 2.2px);
+    height: calc((54px * 8) + 2.2px);
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, .48);
+    @media(max-width: 768px) {
+      width: calc((32px * 8) + 2.2px);
+      height: calc((32px * 8) + 2.2px);
+
+    }
+  }
+
+  //.board__number
+  &__number {
+    div {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      font-size: 22px;
+      @media(max-width: 768px) {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+        padding-left: 6px;
+      }
+    }
+  }
+
+  //.board__lang
+  &__lang {
+    flex: 0 0 calc(54px * 8);
+    display: flex;
+
+    div {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      font-size: 22px;
+      @media(max-width: 768px) {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+        padding-top: 4px;
+      }
+    }
+  }
 }
 
 .cell {
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  img{
-    width: 48px;
-    height: 48px;
+  @media(max-width: 768px) {
+
+    width: 32px;
+    height: 32px;
+  }
+
+  img {
+    width: 40px;
+    max-height: 40px;
+    object-fit: contain;
     position: relative;
+    @media(max-width: 768px) {
+      width: 24px;
+
+
+    }
   }
 
 }
 
 .black {
-  background-color: deepskyblue;
+  background-color: #c08b60;
 }
 
 .white {
-  background-color: #eed4ac;
+  background-color: #F5DFBE;
 }
 
-.selected{
+.selected {
   background-color: brown;
 }
 
-.available{
+.available {
   height: 12px;
   width: 12px;
   border-radius: 50%;
   background-color: green;
+  @media(max-width: 768px) {
+    width: 8px;
+    height: 8px;
+
+  }
 }
-.lost{
-  background: darkolivegreen;
-  height:  50vh;
-  padding: 20px;
-  div{
-    margin-top: 10px;
-  }
-  img{
-    width: 20px;
-    height: 20px;
-  }
+
+.lost {
+
+
 }

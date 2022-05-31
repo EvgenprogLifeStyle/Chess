@@ -14,15 +14,15 @@ interface BoardProps {
 const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, swapPlayer}) => {
 
     const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
+    const numeric = [1, 2, 3, 4, 5, 6, 7, 8]
+    const lang = ["a", "b", "c", "d", "e", "f", "g", "h"]
 
     function click(cell: Cell) {
-
         if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
             selectedCell.moveFigure(cell)
             swapPlayer()
             setSelectedCell(null)
             updateBoard()
-
         } else {
             if (cell.figure?.color === currentPlayer?.color) {
                 setSelectedCell(cell)
@@ -42,25 +42,38 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, swapPla
     function updateBoard() {
         const newBoard = board.getCopyBoard()
         setBoard(newBoard)
-
     }
 
     return (
         <div>
-<h3>Текущий игрок {currentPlayer?.color}</h3>
+            <h3 className="title__top">Ход <span style={{background: currentPlayer?.color}}></span>  игрока</h3>
             <div className="board">
-                {board.cells.map((row, index) =>
-                    <React.Fragment key={index}>
-                        {row.map(cell =>
-                            <CellComponent
-                                click={click}
-                                key={cell.id}
-                                cell={cell}
-                                selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
-                            />
+                <div className="board__body">
+                    <div className="board__cell">
+                        {board.cells.map((row, index) =>
+                            <React.Fragment key={index}>
+                                {row.map(cell =>
+                                    <CellComponent
+                                        click={click}
+                                        key={cell.id}
+                                        cell={cell}
+                                        selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
+                                    />
+                                )}
+                            </React.Fragment>
                         )}
-                    </React.Fragment>
-                )}
+                    </div>
+                    <div className="board__number">
+                        {numeric.reverse().map((num,idx) =>
+                            <div key={idx}>{num}</div>
+                        )}
+                    </div>
+                </div>
+                <div className="board__lang">
+                    {lang.map((lan, idx) =>
+                        <div key={idx}>{lan}</div>
+                    )}
+                </div>
             </div>
         </div>
     );

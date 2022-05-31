@@ -1,0 +1,29 @@
+.lost {
+  min-height: 2vh;
+  margin-bottom: 20px;
+  @media(max-width: 768px) {
+    margin-bottom: 12px;
+flex: 1 0 50%;
+  }
+
+  div {
+    margin-top: 10px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+
+    }
+
+  }
+  h3{
+    @media(max-width: 768px) {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
